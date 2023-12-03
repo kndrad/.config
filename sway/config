@@ -1,0 +1,58 @@
+# Initial Setup 
+# exec ~/set_once.sh
+
+# Config for sway
+#
+# Read `man 5 sway` for a complete reference.
+
+# user config directory
+include $HOME/.config/sway/config.d/*
+
+# only enable this if every app you use is compatible with wayland
+xwayland enable
+
+# displays (laptop in the middle)
+output DP-4 resolution 2560x1440 position 0 0
+output eDP-1 resolution 1920x1080 position 1660 1440
+output DP-3 resolution 2560x1440 position 2560 0
+
+
+# legacy-dotfiles/.config/sway/config
+set $cl_high #009ddc
+set $cl_indi #d9d8d8
+set $cl_back #231f20
+set $cl_fore #d9d8d8
+set $cl_urge #ee2e24
+
+# Colors                border   bg       text     indi     childborder
+#client.focused          $cl_high $cl_high $cl_fore $cl_indi $cl_high
+#client.focused_inactive $cl_back $cl_back $cl_fore $cl_back $cl_back
+#client.focused_tab_title #333333 #5f676a #ffffff
+#client.unfocused        $cl_back $cl_back $cl_fore $cl_back $cl_back
+#client.urgent           $cl_urge $cl_urge $cl_fore $cl_urge $cl_urge
+#client.placeholder #000000 #0c0c0c #ffffff #000000 #0c0c0c
+
+#class 	#border 	#background 	#text 	#indicator 	#child_border
+client.background #ffffff
+client.focused #4c7899	#285577	#ffffff	#2e9ef4	#285577
+client.focused_inactive	#333333	#5f676a	#ffffff	#484e50	#5f676a
+client.focused_tab_title	#333333	#5f676a	#ffffff
+client.unfocused	#333333	#222222	#888888	#292d2e	#222222
+client.urgent	#2f343a	#900000	#ffffff	#900000	#900000
+client.placeholder	#000000	#0c0c0c	#ffffff	#000000	#0c0c0c
+
+exec swaybg -i ~/.config/sway/ryunosuke-kikuno-zE-MrTmjzd4-unsplash.jpg
+output "*" bg ~/.config/sway/ryunosuke-kikuno-zE-MrTmjzd4-unsplash.jpg stretch 
+
+
+input "2:10:TPPS/2_IBM_TrackPoint" {
+    accel_profile flat
+    pointer_accel 0.2
+}
+
+# Window borders
+#default_border pixel 1
+#default_floating_border normal
+#hide_edge_borders smart
+
+

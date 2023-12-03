@@ -139,7 +139,7 @@ dconf/
 discord/
 spotify/
 
-*
+/*
 !sway/
 !swaylock/
 !nvim/
