@@ -26,6 +26,14 @@ lsp_zero.on_attach(function(client, bufnr)
 end)
 
 
+
+-- additional filetypes
+vim.filetype.add({
+    extension = {
+        templ = "templ",
+    },
+})
+
 lsp_zero.format_on_save({
     format_opts = {
         async = false,
@@ -34,23 +42,26 @@ lsp_zero.format_on_save({
     servers = {
         ['gopls'] = { 'go', 'gomod', 'gowork', 'gotmpl' },
         ['lua_ls'] = { 'lua' },
-        -- ['rust_analyzer'] = { 'rust' },
-        -- ['tsserver'] = { 'javascript', 'typescript' },
-        -- ['ansiblels'] = { 'yaml.ansible' },
+        ['rust_analyzer'] = { 'rust' },
+        ['tsserver'] = { 'javascript', 'typescript' },
+        ['ansiblels'] = { 'yaml.ansible' },
         ['bashls'] = { 'sh' },
         ['docker_compose_language_service'] = { 'yaml.docker-compose' },
         ['dockerls'] = { 'dockerfile' },
         ['graphql'] = { "graphql", "typescriptreact", "javascriptreact" },
         ['html'] = { 'html' },
-        -- ['jsonls'] = { 'json', 'jsonc' },
+        ['jsonls'] = { 'json', 'jsonc' },
         ['marksman'] = { 'markdown', 'markdown.mdx' },
         ['pylsp'] = { "python" },
+        ['templ'] = { "templ" },
     }
 })
 
 require('mason').setup()
 require('mason-lspconfig').setup({
-    ensure_installed = { 'gopls', 'lua_ls', 'bashls', 'dockerls' },
+    ensure_installed = {
+        'gopls', 'lua_ls', 'bashls', 'dockerls', 'htmx', 'tailwindcss', 'templ', 'html',
+    },
     handlers = {
         lsp_zero.default_setup,
         gopls = function()
@@ -69,33 +80,17 @@ require('mason-lspconfig').setup({
     automatic_installation = true,
 })
 
--- local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
--- --
--- require('go').setup({
---     lsp_cfg = {
---         capabilities = capabilities,
---     },
---     luasnip = false,
---     lsp_inaly_hints = { enable = false },
--- })
---
--- local cfg = require 'go.lsp'.config() -- config() return the go.nvim gopls setup
--- require('lspconfig').gopls.setup(cfg)
-
 
 -- cmp settings
 local cmp = require('cmp')
 local cmp_action = lsp_zero.cmp_action()
 
--- require("luasnip.loaders.from_vscode").lazy_load()
-
---
 cmp.setup({
-    -- snippet = {
-    --     expand = function(args)
-    --         require('luasnip').lsp_expand(args.body)
-    --     end
-    -- },
+    snippet = {
+        expand = function(args)
+            require('luasnip').lsp_expand(args.body)
+        end
+    },
     sources = {
         { name = 'path' },
         { name = 'nvim_lua' },

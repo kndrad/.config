@@ -6,5 +6,6 @@ require('toggleterm').setup({
     auto_scroll = true,
     on_close = function(term)
         vim.cmd("e")
+        vim.cmd([[ LspRestart ]])
     end,
 })
