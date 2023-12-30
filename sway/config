@@ -12,9 +12,9 @@ include $HOME/.config/sway/config.d/*
 xwayland enable
 
 # displays (laptop in the middle)
-output DP-4 resolution 2560x1440 position 0 0
+output DP-6 resolution 2560x1440 position 0 0
 output eDP-1 resolution 1920x1080 position 1660 1440
-output DP-3 resolution 2560x1440 position 2560 0
+output DP-5 resolution 2560x1440 position 2560 0
 
 
 # legacy-dotfiles/.config/sway/config

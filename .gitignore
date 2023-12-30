@@ -155,4 +155,4 @@ spotify/
 !pulse/
 !pavucontrol.ini/
 !.gitignore
-
+!VSCodium/
